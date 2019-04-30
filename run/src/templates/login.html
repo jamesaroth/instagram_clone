@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<div class="col">
+<div class="row">
+<div class="col-12">
+<h1>Welcome to Fake Instagram!</h1>
+</div>
+</div>
+</div>
+        
+        <div class="col-6">
+            <h3>If you have an account please login</h3>
+            <h3> Alternatively, please <a href="{{url_for('signup')}}">create a new account</a> here</h3>
+            <div class="form-group">
+                <form action="/" method="post" class="form-group">
+                <label for="InputEmail">Email address</label>
+                <input name="email_login" type="email" class="form-control" id="InputEmail" placeholder="Enter email">
+            </div>
+            
+            <div class="form-group">
+            <label for="InputPassword">Password</label>
+            <input name="password_login" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+                <button name="login" type="submit" class="btn btn-primary" value="login">Login</button>
+                </form>
+            <h3>{{error}}</h3>
+        </div>
+        </form>
+        
+        
+    </div>
+<div class="col">
+<div class="row">
+  <div class="col-12">
+    <table class="table table-striped" id="owned_stock_table">
+      <thead class='thead-dark'>
+        <tr>
+          <th>Post</th>
+          <th>Caption</th>
+          <th>User</th>
+          <th>Post Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in allposts %}
+        <tr>
+          <td><img src="{{url_for('image', filename=post.picture)}}" class="img-fluid img-thumbnail"></td>
+          <td>{{ post.post_text }}</td>
+          <td>{{ post.username }}</td>
+          <td>{{ post.time }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</html>
+
+
